@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="{{ lang }}">
+<head>
+<meta charset="utf-8">
+<title>{{ brand.name }} — {{ hero.headline }}</title>
+{{ font_face }}
+<style>
+  @page { size: A4; margin: 0; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: {{ font_css | default(font) }}; color: #0b0b0b; background: #f9f9f7;
+         font-size: 10.5pt; line-height: 1.55; -webkit-print-color-adjust: exact; }
+  .page { width: 210mm; height: 297mm; padding: 12mm 14mm; background: #f9f9f7;
+          page-break-after: always; overflow: hidden; }
+  .page:last-child { page-break-after: auto; }
+
+  .band { background: {{ brand.color }}; color: #fff; border-radius: 6px;
+          padding: 7mm 8mm 6mm; margin-bottom: 6mm; }
+  .band .brand { font-size: 9pt; letter-spacing: 2px; color: #b7d3f6; margin-bottom: 2mm; }
+  .band h1 { font-size: 23pt; font-weight: 900; line-height: 1.25; }
+  .band .sub { font-size: 10.5pt; color: #cde2fb; margin-top: 2mm; }
+
+  h2 { font-size: 12.5pt; font-weight: 700; color: {{ brand.color }}; margin: 5mm 0 2.5mm;
+       border-left: 3.5px solid {{ brand.accent }}; padding-left: 2.5mm; }
+  .tiny { font-size: 7.5pt; color: #898781; line-height: 1.5; }
+
+  table.row { width: 100%; border-collapse: separate; border-spacing: 3mm 0; table-layout: fixed; }
+  table.row td { background: #fcfcfb; border: 1px solid #e1e0d9; border-radius: 6px;
+                 padding: 3.5mm 4mm; vertical-align: top; }
+  .vp-title { font-weight: 700; font-size: 11pt; margin-bottom: 1mm; color: {{ brand.color }}; }
+  .vp-body { font-size: 9pt; color: #52514e; }
+
+  ul.jobs, ul.faq { list-style: none; }
+  ul.jobs li, ul.faq li { background: #fcfcfb; border: 1px solid #e1e0d9; border-radius: 5px;
+                          padding: 2.2mm 3.5mm; margin-bottom: 1.8mm; font-size: 10pt; }
+  ul.jobs li b, ul.faq li b { color: {{ brand.color }}; }
+
+  td.kpi { text-align: center; padding: 4.5mm 3mm 4mm; }
+  .kpi-label { font-size: 9pt; color: #52514e; margin-bottom: 1.5mm; }
+  .kpi-value { font-size: 21pt; font-weight: 900; line-height: 1.1; white-space: nowrap; }
+  .kpi-unit { font-size: 9pt; font-weight: 400; color: #898781; }
+  .kpi-note { font-size: 8pt; color: #898781; margin-top: 1.5mm; }
+  .t-neutral { color: #0b0b0b; }
+  .t-good { color: #006300; }
+  .t-brand { color: {{ brand.color }}; }
+
+  .callout { background: #eaf2fb; border-radius: 6px; padding: 3mm 4mm; font-size: 10pt; margin-top: 3mm; }
+
+  td.price-col { padding: 0; overflow: hidden; }
+  .price-head { padding: 3mm 4mm 2mm; color: #fff; font-weight: 700; font-size: 11.5pt;
+                background: {{ brand.color }}; }
+  .price-body { padding: 3mm 4mm 3.5mm; }
+  .price-num { font-size: 17pt; font-weight: 900; white-space: nowrap; }
+  .price-num .kpi-unit { font-size: 8.5pt; }
+  .price-month { font-size: 9pt; color: #52514e; margin: 0.5mm 0 2mm; }
+  ul.feat { list-style: none; }
+  ul.feat li { font-size: 8.6pt; color: #52514e; padding-left: 3.6mm; position: relative; margin-bottom: 1mm; }
+  ul.feat li:before { content: "\2713"; color: {{ brand.accent }}; position: absolute; left: 0; font-weight: 700; }
+  .badge { display: inline-block; background: #eda100; color: #0b0b0b; font-size: 8pt; font-weight: 700;
+           border-radius: 3px; padding: 0.4mm 2mm; margin-left: 2mm; vertical-align: middle; }
+
+  table.steps { width: 100%; border-collapse: separate; border-spacing: 2.5mm 0; table-layout: fixed; }
+  table.steps td { background: #fcfcfb; border: 1px solid #e1e0d9; border-radius: 6px; padding: 3mm; text-align: center; }
+  .step-n { display: inline-block; width: 7mm; height: 7mm; line-height: 7mm; border-radius: 50%;
+            background: {{ brand.accent }}; color: #fff; font-weight: 700; font-size: 10.5pt; margin-bottom: 1.5mm; }
+  .step-t { font-weight: 700; font-size: 9.5pt; }
+  .step-d { font-size: 8pt; color: #898781; }
+
+  .trust { background: #fcfcfb; border: 1.5px solid {{ brand.accent }}; border-radius: 6px;
+           padding: 3.5mm 4.5mm; margin-top: 3mm; }
+  .trust b { color: {{ brand.color }}; }
+
+  .cta { background: {{ brand.color }}; color: #fff; border-radius: 6px; padding: 5mm 6mm; margin-top: 5mm; }
+  .cta h3 { font-size: 14pt; margin-bottom: 1.5mm; }
+  .cta .contact { font-size: 10pt; color: #cde2fb; }
+  .qrbox { width: 24mm; height: 24mm; background: #fff; border-radius: 4px; float: right;
+           margin-left: 5mm; text-align: center; font-size: 7pt; color: #898781; padding-top: 9mm; }
+  .qrbox img { width: 100%; height: 100%; border-radius: 4px; }
+</style>
+</head>
+<body>
+
+<div class="page">
+  <div class="band">
+    <div class="brand">{{ brand.name }}&nbsp;&nbsp;{{ brand.tagline }}</div>
+    <h1>{{ hero.headline }}</h1>
+    <div class="sub">{{ hero.subhead }}</div>
+  </div>
+
+  <table class="row"><tr>
+    {% for vp in value_props %}
+    <td>
+      <div class="vp-title">{{ vp.title }}</div>
+      <div class="vp-body">{{ vp.body }}</div>
+    </td>
+    {% endfor %}
+  </tr></table>
+
+  <h2>{{ jobs_title }}</h2>
+  <ul class="jobs">
+    {% for j in jobs %}
+    <li><b>{{ j.name }}</b> — {{ j.desc }}</li>
+    {% endfor %}
+  </ul>
+
+  <h2>{{ stats_title }}</h2>
+  <table class="row"><tr>
+    {% for s in stats %}
+    <td class="kpi">
+      <div class="kpi-label">{{ s.label }}</div>
+      <div class="kpi-value t-{{ s.tone | default('neutral') }}">{{ s.value }}{% if s.unit %}<span class="kpi-unit"> {{ s.unit }}</span>{% endif %}</div>
+      <div class="kpi-note">{{ s.note }}</div>
+    </td>
+    {% endfor %}
+  </tr></table>
+  {% if callout %}<div class="callout">{{ callout }}</div>{% endif %}
+  {% if stats_source %}<div class="tiny" style="margin-top:2mm;">{{ stats_source }}</div>{% endif %}
+
+  {% if trust %}
+  <div class="trust"><b>{{ trust.title }}</b>&nbsp;{{ trust.body }}</div>
+  {% endif %}
+</div>
+
+<div class="page">
+  <h2 style="margin-top:0;">{{ pricing_title }}</h2>
+  <table class="row"><tr>
+    {% for p in pricing %}
+    <td class="price-col">
+      <div class="price-head">{{ p.tier }}{% if p.badge %}<span class="badge">{{ p.badge }}</span>{% endif %}</div>
+      <div class="price-body">
+        <div class="price-num">{{ p.price }}{% if p.price_unit %}<span class="kpi-unit"> {{ p.price_unit }}</span>{% endif %}</div>
+        <div class="price-month">{{ p.recurring }}</div>
+        <ul class="feat">
+          {% for f in p.features %}<li>{{ f }}</li>{% endfor %}
+        </ul>
+      </div>
+    </td>
+    {% endfor %}
+  </tr></table>
+  <div class="tiny" style="margin-top:2mm;">{{ pricing_fineprint }} {% if pricing_offer %}{{ pricing_offer }}{% endif %}</div>
+
+  {% if steps %}
+  <h2>{{ steps_title }}</h2>
+  <table class="steps"><tr>
+    {% for s in steps %}
+    <td>
+      <div class="step-n">{{ loop.index }}</div>
+      <div class="step-t">{{ s.title }}</div>
+      <div class="step-d">{{ s.desc }}</div>
+    </td>
+    {% endfor %}
+  </tr></table>
+  {% endif %}
+
+  {% if faq %}
+  <h2>{{ faq_title }}</h2>
+  <ul class="faq">
+    {% for f in faq %}
+    <li><b>{{ f.q }}</b> {{ f.a }}</li>
+    {% endfor %}
+  </ul>
+  {% endif %}
+
+  <div class="cta">
+    <div class="qrbox">{% if cta.qr %}<img src="{{ cta.qr }}" alt="QR">{% else %}QR code<br>(placeholder){% endif %}</div>
+    <h3>{{ cta.headline }}</h3>
+    <div class="contact">{{ cta.contact }}</div>
+    <div class="contact" style="margin-top:1.5mm;">{{ cta.reassurance }}</div>
+  </div>
+
+  <div class="tiny" style="margin-top:4mm;">{{ footer }}</div>
+</div>
+
+</body>
+</html>

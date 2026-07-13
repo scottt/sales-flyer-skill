@@ -1,0 +1,11 @@
+{
+  "name": "sales-flyer",
+  "description": "Generate a sales flyer with pricing as an A4 PDF plus square messaging-app cards (LINE 圖文 / WhatsApp / WeChat, 1040×1040 PNG). Traditional Chinese and English.",
+  "version": "0.1.0",
+  "author": {
+    "name": "Scott Tsai",
+    "url": "https://github.com/scottt"
+  },
+  "homepage": "https://github.com/scottt/sales-flyer-skill",
+  "license": "MIT"
+}

@@ -1,0 +1,155 @@
+# Example content file — a fictional Pets.com subscription flyer.
+# Copy this, edit the values, run:  uv run build.py content/<yours>.yaml
+#
+# Every string is rendered as-is into HTML, so inline tags like <b>…</b> work.
+# Every number below is made up. Yours must not be — see `stats_source`.
+
+name: petsdotcom          # output filename stem
+lang: en
+font: '"Inter", "Helvetica Neue", Helvetica, Arial, sans-serif'
+
+brand:
+  name: PETS.COM
+  tagline: Pet food, on time            # keep short — no _mobile variant exists
+  color: "#1c5cab"        # deep brand blue (headers, bands)
+  accent: "#2a78d6"       # lighter blue (rules, bullets)
+
+hero:
+  headline: Never make the 9pm kibble run again
+  headline_mobile: Never run out<br>of kibble again   # manual break for the square card
+  subhead: A subscription that learns how fast your pet actually eats and ships the next bag before the current one runs out. Vet-formulated food, free delivery, cancel any time.
+  subhead_mobile: We ship the next bag before the current one runs out.
+
+# Value-prop titles are printed as-is on the square cards — keep them short.
+value_props:
+  - title: Always in time
+    body: We track bag size, breed and portion, and time each shipment to land with about a week of food left.
+    body_mobile: Each shipment lands with about a week of food left.
+  - title: Vet-formulated
+    body: Every recipe is signed off by a licensed veterinary nutritionist. Ingredient panels are printed in full, no "meat meal" hand-waving.
+    body_mobile: Signed off by a licensed veterinary nutritionist.
+  - title: Beats the store
+    body: Direct-to-you pricing with no retail markup, and the price is locked for the life of your subscription.
+    body_mobile: No retail markup. Your price is locked for life.
+
+# Name + desc_mobile share one line on the square card. Keep both terse or the
+# card runs off the bottom — five jobs is the practical ceiling in English.
+jobs_title: What you get
+jobs:
+  - name: Adaptive auto-delivery
+    desc: Pet eating faster this month? The schedule shifts on its own — no re-ordering.
+    desc_mobile: The schedule shifts on its own.
+  - name: Portion plan
+    desc: Feeding amounts by breed, age and weight, adjusted as your pet grows.
+    desc_mobile: By breed, age and weight.
+  - name: Free two-day delivery
+    desc: Every order, every plan, no minimum basket.
+    desc_mobile: Every order, no minimum.
+  - name: Ask-a-vet chat
+    desc: Licensed vets on chat for the "is this normal?" questions, included on Family and up.
+    desc_mobile: Licensed vets, on Family and up.
+  - name: Pause or cancel
+    desc: No phone call, no retention script, no cancellation fee.
+    desc_mobile: One tap. No fee, no phone call.
+
+# The proof section: 2-4 headline numbers. `tone` picks the colour:
+#   neutral (black) | good (green) | brand (blue)
+stats_title: What it costs vs. buying it in store
+stats_title_mobile: Store vs. subscription
+stats:
+  - label: In store, 30 lb bag
+    value: $64.99
+    unit: /bag
+    note: Grocery average, premium dry food
+    tone: neutral
+  - label: On subscription
+    value: $46.99
+    unit: /bag
+    note: Family plan, delivery included
+    tone: good
+  - label: Saved per year
+    value: $216
+    note: One 30 lb bag every 6 weeks
+    tone: brand
+
+callout: Even counting the plan fee, a two-dog household pays about <b>$39/month</b> less than the grocery aisle — and stops paying for the bags that go stale.
+stats_source: Figures are illustrative placeholders for this example. Replace them with numbers you can defend in a meeting, and cite the source here — a stat that collapses under a customer's question takes the deal with it.
+stats_source_mobile: Illustrative figures — replace with numbers you can source.
+
+# Optional trust/security box (omit the key to drop the box)
+trust:
+  title: Your pet's food, not your data.
+  body: We use your pet's weight and feeding schedule to time deliveries — nothing else. We <b>do not sell customer data</b>, and you can export or delete your account's records at any time from your dashboard.
+
+pricing_title: Plans
+pricing:
+  - tier: Solo
+    price: $9
+    price_unit: /mo
+    recurring: Plus food at plan pricing
+    recurring_mobile: One pet<br>Food at plan pricing
+    features:
+      - One pet
+      - Auto-delivery, adapts to your pet
+      - Free two-day shipping
+      - Cancel any time
+  - tier: Family
+    badge: Most popular
+    price: $19
+    price_unit: /mo
+    recurring: Plus food at plan pricing
+    recurring_mobile: Up to 4 pets<br>Vet chat included
+    features:
+      - Up to four pets
+      - Auto-delivery, adapts to each pet
+      - Free two-day shipping
+      - Ask-a-vet chat, unlimited
+      - Price locked for the life of the plan
+  - tier: Kennel
+    price: $49
+    price_unit: /mo
+    recurring: Plus food at wholesale pricing
+    recurring_mobile: Unlimited pets<br>Wholesale pricing
+    features:
+      - Unlimited pets
+      - Wholesale food pricing
+      - Next-day shipping
+      - Named account manager
+      - Quarterly nutrition review
+
+# Offer and fineprint print as-is on the pricing card too — keep both tight.
+pricing_offer: <b>First month free</b> on any plan — your first bag ships today.
+pricing_fineprint: Prices exclude sales tax. Food is priced by recipe and bag size; your locked price covers the recipes on your plan at sign-up.
+
+steps_title: Set up in about 5 minutes
+steps:
+  - title: Tell us about your pet
+    desc: Breed, age, weight, and what they eat now
+  - title: Pick a recipe
+    desc: We suggest two; a vet nutritionist picked both
+  - title: Set the first delivery
+    desc: Ships same day if you order before 2pm
+  - title: Forget about it
+    desc: We watch the schedule; you get a text before each shipment
+
+faq_title: Common questions
+faq:
+  - q: What if my pet won't eat it?
+    a: Send back the bag, even opened, and we refund it in full. No return shipping cost.
+  - q: What if I get too much food?
+    a: Push the next shipment back in one tap, or skip it. The schedule re-learns from there.
+  - q: Is this cheaper than the store, really?
+    a: On the Family plan, yes — the plan fee is smaller than the retail markup on a single bag.
+  - q: Can I cancel?
+    a: One tap in the app. No fee, no phone call, and you keep any food already delivered.
+
+cta:
+  headline: Your pet's next bag is already on the shelf. Let's get it to your door.
+  headline_mobile: Your pet's next bag<br>is on us
+  contact: pets.com/start&nbsp;|&nbsp;hello@pets.com&nbsp;|&nbsp;1-800-PETS-COM
+  contact_mobile: pets.com/start<br>hello@pets.com
+  reassurance: First month free, full refund on any bag your pet turns down.
+  reassurance_mobile: Full refund on any bag they turn down.
+  # qr: assets/signup-qr.png   # optional: path relative to the rendered HTML; omit for a placeholder box
+
+footer: Pets.com (fictional example) ｜ Subscription pet food × adaptive delivery × vet-formulated recipes

@@ -1,0 +1,16 @@
+{
+  "name": "sales-flyer",
+  "description": "Sales collateral from a single YAML file: an A4 PDF flyer plus square messaging-app cards.",
+  "owner": {
+    "name": "Scott Tsai",
+    "url": "https://github.com/scottt"
+  },
+  "plugins": [
+    {
+      "name": "sales-flyer",
+      "source": "./",
+      "description": "Generate a sales flyer with pricing as an A4 PDF plus square messaging-app cards (LINE 圖文 / WhatsApp / WeChat, 1040×1040 PNG). Traditional Chinese and English.",
+      "version": "0.1.0"
+    }
+  ]
+}
